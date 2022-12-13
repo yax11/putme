@@ -38,7 +38,6 @@ include "top.php";
                     </tr>
                 </tfoot>
                 <tbody>
-                    <?php list_admitted()?>
                 </tbody>
             </table>
         </div>

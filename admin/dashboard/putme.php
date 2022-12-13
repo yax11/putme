@@ -18,17 +18,25 @@ function list_applicants($department){
 
         while ($row = $result->fetch_assoc()) {
             $reg = $row['reg_number'];
+            $query2 = "SELECT * FROM `post_utme_ssce_1` WHERE `reg_number` = '$reg' ";
+            $result2 = $conn->query($query2);
+//            $row2 = $result2->fetch_assoc();
+
             $jamb_total = $row['jamb_sub_1_score'] + $row['jamb_sub_2_score'] + $row['jamb_sub_3_score'] + $row['jamb_sub_4_score'];
-            if ($jamb_total >= 200){
-                echo "<tr>";
-                echo "<td>".$serial++."</td>";
-                echo "<td>", $row['reg_number'] ,"</td>";
-                echo "<td>", $row['first_name'], " ", $row['last_name'] ,"</td>";
-                echo "<td>", $row['state_of_origin'] ,"</td>";
-                echo "<td>", $row['lga'] ,"</td>";
-                echo "<td>", $jamb_total ,"</td>";
-                echo "<td>", "<a href='./view.php?reg=$reg' class='btn btn-success'><span class='text'>View</span></a>" ,"</td>";
-                echo "</tr>";
+
+            while ($row2 = $result2->fetch_assoc()) {
+                $grade = $jamb_total-150;
+                if ($grade >= 50){
+                    echo "<tr>";
+                    echo "<td>".$serial++."</td>";
+                    echo "<td>", $row['reg_number'] ,"</td>";
+                    echo "<td>", $row['first_name'], " ", $row['last_name'] ,"</td>";
+                    echo "<td>", $row['state_of_origin'] ,"</td>";
+                    echo "<td>", $row['lga'] ,"</td>";
+                    echo "<td>", $grade ,"</td>";
+                    echo "<td>", "<a href='./view.php?reg=$reg' class='btn btn-success'><span class='text'>Admit</span></a>" ,"</td>";
+                    echo "</tr>";
+                }
             }
         }
     }else{
@@ -64,11 +72,9 @@ include "top.php";
                             <div class="text-lg font-weight-bold text-success text-uppercase mb-1">
                                 <?php echo $dept?>
                             </div>
-
                             <div class="h2 mb-0 font-weight-bold text-gray-800"><?php total_applicants($dept); ?></div>
-
                             <div class="text-xs font-weight-bold text-success text-uppercase">
-                                <p>Total Applicants with JAMB above 200 And Meet the Department's Criteria in O'Level.</p>
+                                <p>Applicants who meet the PUTME aggregate of 50+.</p>
                             </div>
 
                         </div>
@@ -76,13 +82,13 @@ include "top.php";
                 </div>
             </div>
         </div>
-        <div class="col-xl-3 col-md-6 mb-4">
-            <a href='./view.php?reg=$reg' class='btn btn-success'><span class='text'>ADMIT ALL ELIGIBLE CANDIDATES</span></a>
-
-        </div>
+<!--        <div class="col-xl-3 col-md-6 mb-4">-->
+<!--            <a href='./view.php?reg=$reg' class='btn btn-success'><span class='text'>ADMIT ALL ELIGIBLE CANDIDATES</span></a>-->
+<!---->
+<!--        </div>-->
     </div>
 
-    <!-- DataTales Example -->
+    <!-- DataTale -->
     <div class="card shadow mb-4">
         <div class="card-header py-3">
             <h6 class="m-0 font-weight-bold text-success">
@@ -99,7 +105,7 @@ include "top.php";
                         <th>Full name</th>
                         <th>State</th>
                         <th>LGA</th>
-                        <th>JAMB Score</th>
+                        <th>PUTME Score</th>
                         <th>More</th>
                     </tr>
                     </thead>
@@ -110,7 +116,7 @@ include "top.php";
                         <th>Full name</th>
                         <th>State</th>
                         <th>LGA</th>
-                        <th>JAMB Score</th>
+                        <th>PUTME Score</th>
                         <th>More</th>
                     </tr>
                     </tfoot>
@@ -124,7 +130,6 @@ include "top.php";
 
 
     <script type="text/javascript">
-
 
         $("#p_utme").addClass("active")
 
