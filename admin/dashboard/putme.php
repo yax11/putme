@@ -26,7 +26,7 @@ function list_applicants($department){
 
             while ($row2 = $result2->fetch_assoc()) {
                 $grade = $jamb_total-150;
-                if ($grade >= 50){
+                if ($grade >= 50 && $row2['admission_status'] == '0'){
                     echo "<tr>";
                     echo "<td>".$serial++."</td>";
                     echo "<td>", $row['reg_number'] ,"</td>";
@@ -34,7 +34,9 @@ function list_applicants($department){
                     echo "<td>", $row['state_of_origin'] ,"</td>";
                     echo "<td>", $row['lga'] ,"</td>";
                     echo "<td>", $grade ,"</td>";
-                    echo "<td>", "<a href='./view.php?reg=$reg' class='btn btn-success'><span class='text'>Admit</span></a>" ,"</td>";
+
+//                    if ()
+                    echo "<td>", "<a href='./admit.php?reg=$reg' class='btn btn-success'><span class='text'>Admit</span></a>" ,"</td>";
                     echo "</tr>";
                 }
             }
@@ -62,26 +64,26 @@ if ($r->num_rows > 0){
 include "top.php";
 ?>
 
-    <div class="row">
-        <div class="col-xl-3 col-md-6 mb-4">
-            <div class="card border-left-success shadow h-100 py-2">
-                <div class="card-body">
-                    <div class="row no-gutters align-items-center">
-                        <div class="col mr-2">
-
-                            <div class="text-lg font-weight-bold text-success text-uppercase mb-1">
-                                <?php echo $dept?>
-                            </div>
-                            <div class="h2 mb-0 font-weight-bold text-gray-800"><?php total_applicants($dept); ?></div>
-                            <div class="text-xs font-weight-bold text-success text-uppercase">
-                                <p>Applicants who meet the PUTME aggregate of 50+.</p>
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+<!--    <div class="row">-->
+<!--        <div class="col-xl-3 col-md-6 mb-4">-->
+<!--            <div class="card border-left-success shadow h-100 py-2">-->
+<!--                <div class="card-body">-->
+<!--                    <div class="row no-gutters align-items-center">-->
+<!--                        <div class="col mr-2">-->
+<!---->
+<!--                            <div class="text-lg font-weight-bold text-success text-uppercase mb-1">-->
+<!--                                --><?php //echo $dept?>
+<!--                            </div>-->
+<!--                            <div class="h2 mb-0 font-weight-bold text-gray-800">--><?php //total_applicants($dept); ?><!--</div>-->
+<!--                            <div class="text-xs font-weight-bold text-success text-uppercase">-->
+<!--                                <p>Applicants who meet the PUTME aggregate of 50+.</p>-->
+<!--                            </div>-->
+<!---->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
 <!--        <div class="col-xl-3 col-md-6 mb-4">-->
 <!--            <a href='./view.php?reg=$reg' class='btn btn-success'><span class='text'>ADMIT ALL ELIGIBLE CANDIDATES</span></a>-->
 <!---->

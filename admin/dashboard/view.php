@@ -57,6 +57,23 @@ function putme_completed_2($user)
     // code...
 }
 
+function admitted_2($user)
+{
+//    $user = $_SESSION[$user];
+    $conn = connection_to_db();
+    if (putme_completed_2($user)) {
+        // echo "SUBMITTED";
+        $query = "SELECT `admission_status` FROM `post_utme_ssce_1` WHERE `reg_number` = '$user'";
+        $result = $conn->query($query);
+        $status = $result->fetch_array();
+        if ($status['admission_status'] == 1) {
+            return True;
+        }else{
+            return False;
+        }
+    }
+    // code...
+}
 
 ?>
 
@@ -116,7 +133,7 @@ function putme_completed_2($user)
 
                                 <?php
 
-                                if (admitted()) {
+                                if (admitted_2($reg)) {
                                     echo "<div class='alert alert-success ' role='alert'>
                               <h6>Admission status: ADMITTED</h6>
                               </div>";

@@ -54,39 +54,12 @@ if ($r->num_rows > 0){
 include "top.php";
 ?>
 
-    <div class="row">
-        <div class="col-xl-3 col-md-6 mb-4">
-            <div class="card border-left-success shadow h-100 py-2">
-                <div class="card-body">
-                    <div class="row no-gutters align-items-center">
-                        <div class="col mr-2">
-
-                            <div class="text-lg font-weight-bold text-success text-uppercase mb-1">
-                                <?php echo $dept?>
-                            </div>
-
-                            <div class="h2 mb-0 font-weight-bold text-gray-800"><?php total_applicants($dept); ?></div>
-
-                            <div class="text-xs font-weight-bold text-success text-uppercase">
-                                <p>Total Applicants with JAMB above 200 And Meet the Department's Criteria in O'Level.</p>
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-xl-3 col-md-6 mb-4">
-            <a href='./view.php?reg=$reg' class='btn btn-success'><span class='text'>ADMIT ALL ELIGIBLE CANDIDATES</span></a>
-
-        </div>
-    </div>
 
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
         <div class="card-header py-3">
             <h6 class="m-0 font-weight-bold text-success">
-                CANDIDATES ELIGIBLE FOR ADMISSION
+                CANDIDATES <span class="text-danger">NOT</span> ELIGIBLE FOR ADMISSION
             </h6>
         </div>
         <div class="card-body">
