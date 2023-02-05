@@ -10,7 +10,7 @@ if (!isset($_SESSION['admin'])) {
 include './../functions.php';
 
 function list_applicants($department){
-    $conn = connection_to_db($department);
+    $conn = connection_to_db();
     $query = "SELECT * FROM `student_application` WHERE `department` = '$department' ";
     $result = $conn->query($query);
     $serial = 1;

@@ -1,5 +1,4 @@
-<?php
-session_start();
+<?php session_start();
 if (isset($_SESSION['admin'])) {
     header("Location: dashboard");
     exit();
@@ -30,7 +29,8 @@ if (isset($_POST['login_id']) and isset($_POST['password'])) {
 
 		if ($result->num_rows > 0) {
 			$_SESSION['admin'] = $login_id;
-			// go_to_dashboard();
+
+			go_to_dashboard();
 			// echo "FOUND";
 		} else {
 			// echo "ERROR";
@@ -43,10 +43,6 @@ if (isset($_POST['login_id']) and isset($_POST['password'])) {
 //else{
 // 	echo "Error Connecting to DATABASE";
 // }
-
-
-
-
 ?>
 
 <!doctype html>
@@ -67,7 +63,7 @@ if (isset($_POST['login_id']) and isset($_POST['password'])) {
   	
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light" style="background-color: #0f321e !important; color: white !important;">
-  <a class="navbar-brand" href="https://coeakwanga.edu.ng/">
+  <a class="navbar-brand" href="index.php">
 <!-- Image and text -->
     <img src="assets/logo.png" width="" height="50" class="d-inline-block align-top" alt="" style="background-color: #00a64e;border-radius: 10px;">
   </a>
@@ -87,7 +83,7 @@ if (isset($_POST['login_id']) and isset($_POST['password'])) {
 
   	<div class="container-fluid col-md-6 mt-3 p-3" style="background-color:#0f321e; border-radius: 10px;">
 
-				<form class="m-3" action="" method="POST">
+				<form class="m-3" action="index.php" method="POST">
 				  <div class="form-group">
 				    <label for="exampleInputEmail1" class="text-white">Email</label>
 				    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Email/Username" name="login_id">
@@ -102,7 +98,7 @@ if (isset($_POST['login_id']) and isset($_POST['password'])) {
 				  <button type="submit" class="btn btn-primary" class="text-white" style="background-color: #00a64e; border-color: #00a64e;">Submit</button>
 				</form>
 
-	</div>
+		</div>
 
 <div class="d-flex flex-column" style="position: fixed;bottom: 0px; background-color: #0f321e !important;width: 100%;">
   <div id="page-content">
@@ -128,3 +124,4 @@ if (isset($_POST['login_id']) and isset($_POST['password'])) {
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
   </body>
 </html>
+

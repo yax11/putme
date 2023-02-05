@@ -10,7 +10,7 @@ if (!isset($_SESSION['admin'])) {
 include './../functions.php';
 
 function list_applicants($department){
-    $conn = connection_to_db($department);
+    $conn = connection_to_db();
     $query = "SELECT * FROM `student_application` WHERE `department` = '$department' ";
     $result = $conn->query($query);
     $serial = 1;
@@ -47,6 +47,7 @@ function list_applicants($department){
 }
 
 
+
 $conn = connection_to_db();
 $email = $dept = $fname = $lname = $oname ='';
 $query = "SELECT * FROM `admins` where `email` = '$admin'";
@@ -64,30 +65,7 @@ if ($r->num_rows > 0){
 include "top.php";
 ?>
 
-<!--    <div class="row">-->
-<!--        <div class="col-xl-3 col-md-6 mb-4">-->
-<!--            <div class="card border-left-success shadow h-100 py-2">-->
-<!--                <div class="card-body">-->
-<!--                    <div class="row no-gutters align-items-center">-->
-<!--                        <div class="col mr-2">-->
-<!---->
-<!--                            <div class="text-lg font-weight-bold text-success text-uppercase mb-1">-->
-<!--                                --><?php //echo $dept?>
-<!--                            </div>-->
-<!--                            <div class="h2 mb-0 font-weight-bold text-gray-800">--><?php //total_applicants($dept); ?><!--</div>-->
-<!--                            <div class="text-xs font-weight-bold text-success text-uppercase">-->
-<!--                                <p>Applicants who meet the PUTME aggregate of 50+.</p>-->
-<!--                            </div>-->
-<!---->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--        </div>-->
-<!--        <div class="col-xl-3 col-md-6 mb-4">-->
-<!--            <a href='./view.php?reg=$reg' class='btn btn-success'><span class='text'>ADMIT ALL ELIGIBLE CANDIDATES</span></a>-->
-<!---->
-<!--        </div>-->
+
     </div>
 
     <!-- DataTale -->
